@@ -1,0 +1,84 @@
+<!-- Inizio del documento HTML -->
+<html>
+  <!-- Sezione head che contiene metadati e riferimenti esterni -->
+  <head> 
+	<title>Convertitore di numeri romani</title>
+    </head>
+  <!-- Inizio del corpo della pagina che contiene gli elementi visibili -->
+  <body>
+    <!-- Campo di input numerico per inserire il numero da convertire -->
+    <input id="number" type="number">
+    <!-- Pulsante che avvia la conversione quando cliccato -->
+    <button id="convert-btn">Convert</button>
+    <!-- Paragrafo dove verrà mostrato il risultato della conversione -->
+    <p id="output"></p>
+      <!-- Collegamento al file JavaScript che contiene la logica dell'applicazione -->
+      <script src="./script.js"></script>
+   <!-- Fine della sezione body -->
+   </body>
+  <!-- Fine del documento HTML -->
+  </html>
+
+
+
+// Ottiene il riferimento all'elemento di input tramite il suo ID
+const input = document.getElementById("number");
+// Ottiene il riferimento al pulsante di conversione tramite il suo ID
+const convertBtn = document.getElementById("convert-btn");
+// Ottiene il riferimento all'elemento di output tramite il suo ID
+const output = document.getElementById("output");
+// Aggiunge un event listener al pulsante che si attiva al click
+convertBtn.addEventListener("click", () => {
+  // Converte il valore dell'input in un numero
+  const number = +input.value
+  // Verifica se il numero è valido (non vuoto, non NaN)
+  if(!number){
+    // Mostra un messaggio di errore se il numero non è valido
+    output.innerText = "Per favore, scrivi un numero romano corretto"
+    // Esce dalla funzione
+    return;
+  }
+  // Verifica se il numero è negativo
+  if(number < 0){
+    // Mostra un messaggio di errore se il numero è minore di 1
+    output.innerText = "Please enter a number greater than or equal to 1"
+    // Esce dalla funzione
+    return;
+  }
+  // Verifica se il numero è troppo grande
+  if(number >= 4000){
+    // Mostra un messaggio di errore se il numero è maggiore di 3999
+    output.innerText = "Metti un numero sotto o non oltre 3999"
+    // Esce dalla funzione
+    return;
+  }
+  // Richiama la funzione di conversione e salva il risultato
+  const result = convertNumToRoman(+input.value)
+  // Mostra il risultato nell'elemento di output
+  output.innerText = result
+})
+// Definisce la funzione per convertire numeri arabi in numeri romani
+function convertNumToRoman(num){
+  // Array con i valori decimali in ordine decrescente
+  const val = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9 ,5, 4, 1]
+  // Array con i simboli romani corrispondenti
+  const syms = ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"];
+  // Stringa che conterrà il numero romano risultante
+  let roman = '';
+  // Indice per scorrere gli array
+  let i = 0;
+  // Ciclo che continua finché il numero è maggiore di zero
+  while(num > 0){
+    // Calcola quante volte il valore corrente entra nel numero
+    const div = Math.floor(num / val[i]);
+    // Sottrae dal numero il valore corrispondente
+    num -= div * val[i]
+    // Aggiunge al risultato i simboli romani ripetuti il numero di volte necessario
+    roman += syms[i].repeat(div)
+    // Passa al valore successivo dell'array
+    i++
+  }
+  // Restituisce il numero romano completo
+  return roman;
+}
+

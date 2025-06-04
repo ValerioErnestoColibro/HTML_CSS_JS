@@ -1,0 +1,158 @@
+<!DOCTYPE html> <!-- Dichiarazione del tipo di documento HTML5 -->
+<html lang="en"> <!-- Elemento radice HTML con attributo lingua impostato su inglese -->
+<head> <!-- Intestazione del documento contenente metadati -->
+    <meta charset="UTF-8"> <!-- Definisce la codifica dei caratteri come UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Configura la visualizzazione responsive per dispositivi mobili -->
+    <title>Controllo del numero di telefono</title> <!-- Titolo della pagina visualizzato nella scheda del browser -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap'); /* Importa il font Roboto con tutti i pesi e stili da Google Fonts */
+
+        body { /* Stile per l'elemento body, si applica a tutta la pagina */
+            font-family: Roboto, Arial, Verdana, sans-serif; /* Imposta la famiglia di font da utilizzare, con alternative di fallback */
+        }
+
+        main { /* Stile per l'elemento main, il contenitore principale */
+            display: flex; /* Imposta il layout come flessibile */
+            flex-wrap: wrap; /* Permette agli elementi figli di andare a capo quando necessario */
+            flex-direction: column; /* Dispone gli elementi figli in una colonna verticale */
+            align-items: center; /* Centra gli elementi figli orizzontalmente */
+            justify-content: center; /* Centra gli elementi figli verticalmente */
+        }
+
+        .phone-container { /* Stile per il contenitore che simula un telefono */
+            width: 260px; /* Imposta la larghezza del contenitore a 260 pixel */
+            height: 460px; /* Imposta l'altezza del contenitore a 460 pixel */
+            margin: 30px auto; /* Aggiunge un margine di 30px sopra e sotto, e centra orizzontalmente con auto */
+            display: flex; /* Imposta il layout come flessibile */
+            flex-direction: column; /* Dispone gli elementi figli in una colonna verticale */
+            justify-content: center; /* Centra gli elementi figli verticalmente */
+            border: 15px solid #000000; /* Aggiunge un bordo nero spesso 15px per simulare la cornice del telefono */
+            background-color: #d1d1d1; /* Imposta lo sfondo grigio chiaro */
+            border-radius: 20px; /* Arrotonda gli angoli del telefono con un raggio di 20px */
+        }
+
+        label { /* Stile per le etichette dei campi di input */
+            margin: 10px auto; /* Aggiunge un margine di 10px sopra e sotto, e centra con auto */
+        }
+
+        input { /* Stile per i campi di input */
+            font-family: inherit; /* Eredita la famiglia di font dall'elemento genitore */
+            display: block; /* Visualizza l'elemento come blocco, occupando una riga intera */
+            margin: 10px auto; /* Aggiunge un margine di 10px sopra e sotto, e centra con auto */
+            padding: 5px; /* Aggiunge una spaziatura interna di 5px */
+            text-align: center; /* Centra il testo all'interno dell'input */
+            width: 90%; /* Imposta la larghezza al 90% del contenitore */
+            height: 42px; /* Imposta l'altezza a 42 pixel */
+            font-size: 16px; /* Imposta la dimensione del testo a 16 pixel */
+            border: 1px solid #000000; /* Aggiunge un sottile bordo nero di 1px */
+        }
+
+        button { /* Stile generico per tutti i pulsanti */
+            font-family: inherit; /* Eredita la famiglia di font dall'elemento genitore */
+            cursor: pointer; /* Cambia il cursore in una mano quando si passa sopra */
+            width: 100px; /* Imposta la larghezza a 100 pixel */
+            margin: 10px; /* Aggiunge un margine di 10px su tutti i lati */
+            font-size: 18px; /* Imposta la dimensione del testo a 18 pixel */
+        }
+
+        #check-btn { /* Stile specifico per il pulsante di verifica */
+            background-color: #aeb3ff; /* Imposta lo sfondo blu chiaro */
+        }
+
+        #clear-btn { /* Stile specifico per il pulsante di cancellazione */
+            background-color: #fffaae; /* Imposta lo sfondo giallo chiaro */
+        }
+
+        .phone-footer { /* Stile per il piè di pagina del telefono */
+            background-color: #d1d1d1; /* Imposta lo sfondo grigio chiaro, uguale al telefono */
+            display: flex; /* Imposta il layout come flessibile */
+            justify-content: center; /* Centra gli elementi figli orizzontalmente */
+        }
+
+        #results-div { /* Stile per il div che mostra i risultati della validazione */
+            height: 200px; /* Imposta l'altezza a 200 pixel */
+            width: 100%; /* Imposta la larghezza al 100% del contenitore */
+            font-size: 1.2rem; /* Imposta la dimensione del testo a 1.2 volte la dimensione di default */
+            text-align: center; /* Centra il testo all'interno del div */
+            margin: 10px 0; /* Aggiunge un margine di 10px sopra e sotto, nessun margine laterale */
+            padding: 0 10px; /* Aggiunge una spaziatura interna di 10px a destra e sinistra */
+            overflow-y: auto; /* Aggiunge una barra di scorrimento verticale se il contenuto eccede */
+        }
+        
+        .valid { /* Classe per formattare i messaggi di numero valido */
+            color: green; /* Imposta il colore del testo a verde */
+            font-weight: bold; /* Imposta il testo in grassetto */
+        }
+        
+        .invalid { /* Classe per formattare i messaggi di numero non valido */
+            color: red; /* Imposta il colore del testo a rosso */
+            font-weight: bold; /* Imposta il testo in grassetto */
+        }
+    </style>
+</head>
+<body> <!-- Corpo della pagina -->
+    <main> <!-- Elemento principale della pagina -->
+        <h1>Controllo del numero di telefono</h1> <!-- Titolo principale -->
+        <div class="phone-container"> <!-- Contenitore a forma di telefono -->
+            <label for="user-input">Scrivi un numero di telefono: </label> <!-- Etichetta per il campo di input -->
+            <input type="text" placeholder="Esempio: 091 123456" id="user-input" maxlength="20" value=""> <!-- Campo di input per il numero di telefono -->
+            <div id="results-div"></div> <!-- Div per mostrare i risultati della validazione -->
+            <div class="phone-footer"> <!-- Piè di pagina del telefono con i pulsanti -->
+                <button id="check-btn">Controlla</button> <!-- Pulsante di verifica -->
+                <button id="clear-btn">Cancella</button> <!-- Pulsante di cancellazione -->
+            </div>
+        </div>
+    </main>
+    <script> <!-- Sezione JavaScript -->
+        const userInput = document.getElementById("user-input"); // Ottiene riferimento all'elemento di input
+        const checkBtn = document.getElementById("check-btn"); // Ottiene riferimento al pulsante di verifica
+        const clearBtn = document.getElementById("clear-btn"); // Ottiene riferimento al pulsante di cancellazione
+        const resultDiv = document.getElementById("results-div"); // Ottiene il riferimento al div dei risultati
+        
+        // Funzione per verificare se il numero di telefono è valido
+        function checkValidNumber(number) { 
+            // Rimozione di spazi extra e normalizzazione
+            const cleanNumber = number.trim(); 
+            
+            // Definizione del pattern per un numero nel formato "091 123456"
+            const pattern = /^\d{3}\s\d{6}$/; 
+            
+            // Verifica se il numero corrisponde al pattern
+            if (pattern.test(cleanNumber)) { 
+                // Mostra messaggio di successo e applica classe per colore verde
+                resultDiv.innerHTML = `<p class="valid">Il numero ${cleanNumber} è valido!</p>`; 
+                resultDiv.innerHTML += "<p>Formato corretto: XXX XXXXXX</p>"; 
+            } else { 
+                // Mostra messaggio di errore e applica classe per colore rosso
+                resultDiv.innerHTML = `<p class="invalid">Il numero ${cleanNumber} non è valido!</p>`; 
+                resultDiv.innerHTML += "<p>Il formato richiesto è: XXX XXXXXX</p>"; 
+                resultDiv.innerHTML += "<p>Esempio: 091 123456</p>"; 
+            }
+        }
+        
+        // Evento click sul pulsante Controlla
+        checkBtn.addEventListener("click", () => { 
+            const input = userInput.value; // Ottiene il valore inserito dall'utente
+            
+            if (input.length === 0) { // Controlla se l'input è vuoto
+                alert("Inserisci un numero di telefono!"); // Mostra un alert se non è stato inserito un numero
+            } else {
+                checkValidNumber(input); // Chiama la funzione di validazione
+            }
+        });
+        
+        // Evento click sul pulsante Cancella
+        clearBtn.addEventListener("click", () => { 
+            userInput.value = ""; // Cancella il contenuto del campo di input
+            resultDiv.innerHTML = ""; // Cancella i risultati precedenti
+        });
+        
+        // Evento per consentire la validazione premendo Invio nel campo di input
+        userInput.addEventListener("keyup", (event) => { 
+            if (event.key === "Enter") { // Controlla se è stato premuto il tasto Invio
+                checkBtn.click(); // Simula il click sul pulsante di controllo
+            }
+        });
+    </script>
+</body>
+</html>

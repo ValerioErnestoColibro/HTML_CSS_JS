@@ -1,0 +1,231 @@
+<!DOCTYPE html> <!-- Dichiarazione del tipo di documento HTML -->
+<html lang="en"> <!-- Elemento radice con lingua inglese -->
+<head> <!-- Sezione di intestazione del documento -->
+    <meta charset="UTF-8"> <!-- Definizione della codifica dei caratteri UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Configurazione del viewport per dispositivi mobili -->
+    <title>AI Chatbot</title> <!-- Titolo della pagina web -->
+<style>
+    /* Reset default styles */ /* Reset degli stili predefiniti */
+* { /* Selettore universale per tutti gli elementi */
+  margin: 0; /* Margine impostato a zero */
+  padding: 0; /* Padding impostato a zero */
+  box-sizing: border-box; /* Il modello di box include bordi e padding nelle dimensioni */
+  font-family: Arial, sans-serif; /* Font predefinito del testo */
+}
+
+/* Fix the navbar at the top */ /* Fissa la barra di navigazione in alto */
+#header { /* Selettore per l'elemento con ID "header" */
+  position: fixed; /* Posizione fissa rispetto alla finestra del browser */
+  top: 0; /* Posizionato all'estremità superiore */
+  left: 0; /* Posizionato all'estremità sinistra */
+  width: 100%; /* Larghezza pari al 100% del contenitore */
+  background: white; /* Sfondo bianco */
+  display: flex; /* Disposizione flessibile degli elementi figli */
+  align-items: center; /* Allineamento verticale centrato */
+  justify-content: space-between; /* Distribuzione dello spazio tra gli elementi */
+  padding: 10px 20px; /* Padding di 10px sopra e sotto, 20px ai lati */
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Ombra sotto l'header */
+  z-index: 1000; /* Livello di sovrapposizione alto */
+}
+
+/* Resize the logo */ /* Ridimensiona il logo */
+#header-img { /* Selettore per l'elemento con ID "header-img" */
+  max-width: 120px; /* Larghezza massima di 120 pixel */
+  height: auto; /* Altezza automatica per mantenere le proporzioni */
+  display: block; /* Visualizzato come blocco */
+}
+
+/* Style the navigation bar */ /* Stile della barra di navigazione */
+#nav-bar ul { /* Selettore per la lista dentro l'elemento con ID "nav-bar" */
+  list-style: none; /* Rimuove i marcatori della lista */
+  display: flex; /* Disposizione flessibile degli elementi figli */
+  gap: 20px; /* Spazio di 20px tra gli elementi */
+}
+
+#nav-bar li { /* Selettore per gli elementi della lista */
+  display: inline; /* Visualizzati in linea */
+}
+
+#nav-bar a { /* Selettore per i link nella barra di navigazione */
+  text-decoration: none; /* Rimuove la sottolineatura dei link */
+  font-size: 18px; /* Dimensione del testo di 18 pixel */
+  color: #333; /* Colore del testo grigio scuro */
+  font-weight: bold; /* Testo in grassetto */
+  transition: color 0.3s ease-in-out; /* Transizione del colore con effetto */
+}
+
+#nav-bar a:hover { /* Selettore per i link al passaggio del mouse */
+  color: #007BFF; /* Colore del testo blu al passaggio del mouse */
+}
+
+/* Ensure the content does not overlap with the navbar */ /* Assicura che il contenuto non si sovrapponga alla barra di navigazione */
+body { /* Selettore per il corpo della pagina */
+  padding-top: 80px; /* Padding superiore di 80 pixel */
+}
+
+/* Fix section scrolling issue */ /* Risolve il problema di scorrimento delle sezioni */
+section { /* Selettore per tutte le sezioni */
+  scroll-margin-top: 80px; /* Margine superiore per lo scorrimento */
+  padding: 60px 20px; /* Padding di 60px sopra e sotto, 20px ai lati */
+  max-width: 800px; /* Larghezza massima di 800 pixel */
+  margin: 0 auto; /* Centrato orizzontalmente */
+  text-align: center; /* Testo centrato */
+}
+
+/* Features Section Styling */ /* Stilizzazione della sezione delle caratteristiche */
+.features-container { /* Selettore per il contenitore delle caratteristiche */
+  display: flex; /* Disposizione flessibile degli elementi figli */
+  justify-content: center; /* Allineamento orizzontale centrato */
+  gap: 20px; /* Spazio di 20px tra gli elementi */
+  flex-wrap: wrap; /* Avvolgimento degli elementi su più righe se necessario */
+  margin-top: 20px; /* Margine superiore di 20 pixel */
+}
+
+.feature { /* Selettore per gli elementi delle caratteristiche */
+  width: 250px; /* Larghezza di 250 pixel */
+  text-align: center; /* Testo centrato */
+}
+
+.feature img { /* Selettore per le immagini nelle caratteristiche */
+  width: 50px; /* Larghezza di 50 pixel */
+  height: 50px; /* Altezza di 50 pixel */
+  margin-bottom: 10px; /* Margine inferiore di 10 pixel */
+}
+
+/* Style the video section */ /* Stilizzazione della sezione video */
+#video { /* Selettore per l'elemento con ID "video" */
+  width: 100%; /* Larghezza pari al 100% del contenitore */
+  max-width: 560px; /* Larghezza massima di 560 pixel */
+  display: block; /* Visualizzato come blocco */
+  margin: 20px auto; /* Margine di 20px sopra e sotto, centrato orizzontalmente */
+}
+
+/* Style the form */ /* Stilizzazione del modulo */
+#form { /* Selettore per l'elemento con ID "form" */
+  margin-top: 20px; /* Margine superiore di 20 pixel */
+}
+
+#email { /* Selettore per l'elemento con ID "email" */
+  width: 100%; /* Larghezza pari al 100% del contenitore */
+  max-width: 300px; /* Larghezza massima di 300 pixel */
+  padding: 10px; /* Padding di 10 pixel su tutti i lati */
+  font-size: 16px; /* Dimensione del testo di 16 pixel */
+  border: 1px solid #ccc; /* Bordo grigio chiaro di 1 pixel */
+  border-radius: 5px; /* Angoli arrotondati di 5 pixel */
+  margin-bottom: 10px; /* Margine inferiore di 10 pixel */
+}
+
+#submit { /* Selettore per l'elemento con ID "submit" */
+  padding: 10px 20px; /* Padding di 10px sopra e sotto, 20px ai lati */
+  font-size: 16px; /* Dimensione del testo di 16 pixel */
+  color: white; /* Colore del testo bianco */
+  background-color: #007BFF; /* Colore di sfondo blu */
+  border: none; /* Nessun bordo */
+  border-radius: 5px; /* Angoli arrotondati di 5 pixel */
+  cursor: pointer; /* Cursore a forma di puntatore al passaggio del mouse */
+}
+
+#submit:hover { /* Selettore per il pulsante di invio al passaggio del mouse */
+  background-color: #0056b3; /* Colore di sfondo blu più scuro al passaggio del mouse */
+}
+
+/* Responsive Design */ /* Design responsivo */
+@media (max-width: 768px) { /* Media query per schermi con larghezza massima di 768px */
+  #header { /* Selettore per l'elemento con ID "header" su schermi piccoli */
+    flex-direction: column; /* Disposizione degli elementi figli in colonna */
+    text-align: center; /* Testo centrato */
+  }
+
+  #nav-bar ul { /* Selettore per la lista di navigazione su schermi piccoli */
+    flex-direction: column; /* Disposizione degli elementi figli in colonna */
+    gap: 10px; /* Spazio di 10px tra gli elementi */
+  }
+
+  .features-container { /* Selettore per il contenitore delle caratteristiche su schermi piccoli */
+    flex-direction: column; /* Disposizione degli elementi figli in colonna */
+    align-items: center; /* Allineamento verticale centrato */
+  }
+}
+</style>
+</head> <!-- Fine della sezione di intestazione -->
+<body> <!-- Inizio del corpo della pagina -->
+
+   <!-- Header Section --> <!-- Commento che indica l'inizio della sezione dell'intestazione -->
+   <header id="header"> <!-- Elemento di intestazione con ID "header" -->
+      <img id="header-img" src="https://i.postimg.cc/K8cg3QrR/logo.jpg" alt="AI Chatbot Logo"> <!-- Immagine del logo con ID "header-img" e testo alternativo -->
+      <nav id="nav-bar"> <!-- Elemento di navigazione con ID "nav-bar" -->
+        <ul> <!-- Lista non ordinata per i link di navigazione -->
+          <li><a class="nav-link" href="#features">Features</a></li> <!-- Elemento lista con link alla sezione "features" -->
+          <li><a class="nav-link" href="#pricing">Pricing</a></li> <!-- Elemento lista con link alla sezione "pricing" -->
+          <li><a class="nav-link" href="#contact">Contact</a></li> <!-- Elemento lista con link alla sezione "contact" -->
+        </ul> <!-- Fine della lista non ordinata -->
+      </nav> <!-- Fine dell'elemento di navigazione -->
+   </header> <!-- Fine della sezione di intestazione -->
+
+   <!-- Features Section --> <!-- Commento che indica l'inizio della sezione delle caratteristiche -->
+   <section id="features"> <!-- Sezione con ID "features" -->
+      <h2>Why Choose Our AI Chatbot?</h2> <!-- Titolo di secondo livello della sezione -->
+      <div class="features-container"> <!-- Contenitore per le caratteristiche del chatbot -->
+        <div class="feature"> <!-- Elemento per la prima caratteristica -->
+          <img src="https://cdn-icons-png.flaticon.com/512/1055/1055649.png" alt="AI Icon"> <!-- Immagine dell'icona AI con testo alternativo -->
+          <p><strong>AI-Powered Conversations</strong> – Our chatbot understands and responds intelligently.</p> <!-- Paragrafo con descrizione della caratteristica -->
+        </div> <!-- Fine del primo elemento caratteristica -->
+        <div class="feature"> <!-- Elemento per la seconda caratteristica -->
+          <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Support Icon"> <!-- Immagine dell'icona di supporto con testo alternativo -->
+          <p><strong>24/7 Customer Support</strong> – Never miss a customer inquiry, day or night.</p> <!-- Paragrafo con descrizione della caratteristica -->
+        </div> <!-- Fine del secondo elemento caratteristica -->
+        <div class="feature"> <!-- Elemento per la terza caratteristica -->
+          <img src="https://cdn-icons-png.flaticon.com/512/875/875286.png" alt="Integration Icon"> <!-- Immagine dell'icona di integrazione con testo alternativo -->
+          <p><strong>Seamless Integration</strong> – Easily connect with your website or app.</p> <!-- Paragrafo con descrizione della caratteristica -->
+        </div> <!-- Fine del terzo elemento caratteristica -->
+      </div> <!-- Fine del contenitore delle caratteristiche -->
+   </section> <!-- Fine della sezione delle caratteristiche -->
+
+   <!-- Video Section --> <!-- Commento che indica l'inizio della sezione video -->
+   <section id="video-section"> <!-- Sezione con ID "video-section" -->
+      <h2>Watch AI Chatbot in Action</h2> <!-- Titolo di secondo livello della sezione -->
+      <iframe  <!-- Elemento iframe per incorporare un video -->
+         id="video"  <!-- ID dell'elemento iframe -->
+         width="560"  <!-- Larghezza dell'iframe in pixel -->
+         height="315"  <!-- Altezza dell'iframe in pixel -->
+         src="https://www.youtube.com/embed/MTmf5VtflpM"  <!-- URL del video di YouTube -->
+         frameborder="0"  <!-- Nessun bordo attorno all'iframe -->
+         allowfullscreen <!-- Permette la visualizzazione a schermo intero -->
+         title="AI Chatbot Demo Video"> <!-- Titolo del video per l'accessibilità -->
+      </iframe> <!-- Fine dell'elemento iframe -->
+   </section> <!-- Fine della sezione video -->
+
+   <!-- Pricing Section --> <!-- Commento che indica l'inizio della sezione dei prezzi -->
+   <section id="pricing"> <!-- Sezione con ID "pricing" -->
+      <h2>Flexible Pricing Plans</h2> <!-- Titolo di secondo livello della sezione -->
+      <div class="pricing-container"> <!-- Contenitore per i piani di prezzo -->
+        <div class="pricing-card"> <!-- Scheda per il piano base -->
+          <h3>Basic Plan</h3> <!-- Titolo di terzo livello per il piano base -->
+          <p><strong>$10/month</strong></p> <!-- Paragrafo con il prezzo del piano base -->
+          <p>✔ AI Chatbot Access</p> <!-- Caratteristica del piano base -->
+          <p>✔ Email Support</p> <!-- Caratteristica del piano base -->
+        </div> <!-- Fine della scheda del piano base -->
+
+        <div class="pricing-card"> <!-- Scheda per il piano pro -->
+          <h3>Pro Plan</h3> <!-- Titolo di terzo livello per il piano pro -->
+          <p><strong>$30/month</strong></p> <!-- Paragrafo con il prezzo del piano pro -->
+          <p>✔ Everything in Basic</p> <!-- Caratteristica del piano pro -->
+          <p>✔ Priority Support</p> <!-- Caratteristica del piano pro -->
+          <p>✔ API Access</p> <!-- Caratteristica del piano pro -->
+        </div> <!-- Fine della scheda del piano pro -->
+      </div> <!-- Fine del contenitore dei piani di prezzo -->
+   </section> <!-- Fine della sezione dei prezzi -->
+
+   <!-- Contact Section --> <!-- Commento che indica l'inizio della sezione di contatto -->
+   <section id="contact"> <!-- Sezione con ID "contact" -->
+      <h2>Stay Connected</h2> <!-- Titolo di secondo livello della sezione -->
+      <p>Sign up to receive updates and AI chatbot insights.</p> <!-- Paragrafo con invito all'iscrizione -->
+      <form id="form" action="https://www.freecodecamp.com/email-submit"> <!-- Modulo con ID "form" e URL di invio -->
+        <label for="email" class="sr-only">Email Address</label> <!-- Etichetta per il campo email, nascosta visivamente -->
+        <input id="email" type="email" name="email" placeholder="Enter your email" required> <!-- Campo di input per l'email, obbligatorio -->
+        <input id="submit" type="submit" value="Sign Up"> <!-- Pulsante di invio del modulo -->
+      </form> <!-- Fine del modulo -->
+   </section> <!-- Fine della sezione di contatto -->
+
+</body> <!-- Fine del corpo della pagina -->
+</html> <!-- Fine dell'elemento radice HTML -->

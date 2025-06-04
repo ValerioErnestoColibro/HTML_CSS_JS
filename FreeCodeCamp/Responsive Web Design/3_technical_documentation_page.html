@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django Technical Documentation</title>
+    <style>
+        * {
+            margin: 0; /* Rimuove i margini predefiniti */
+            padding: 0; /* Rimuove il padding predefinito */
+            box-sizing: border-box; /* Imposta il box-sizing per evitare problemi di dimensionamento */
+            font-family: sans-serif; /* Imposta un font di base per tutto il documento */
+        }
+
+        /* Imposta uno scrolling fluido per la parte HTML */
+        html{
+            scroll-behavior: smooth;
+        }
+
+        /* Stile di base per il corpo della pagina */
+        body {
+            display: flex; /* Usa il modello flexbox per il layout */
+            overflow: hidden; /* Impedisce lo scrolling orizzontale */
+        }
+
+        /* Style della barra di navigazione */
+        nav {
+            flex-basis: 25%; /* Occupa il 25% della larghezza della pagina */
+            width: 100%; /* Imposta la larghezza al 100% */
+            border-right: 3px solid #777; /* Aggiunge un bordo a destra */
+            padding-top: 25px; /* Aggiunge spazio in alto */
+            padding-right: 10px; /* Aggiunge spazio a destra */
+            overflow-y: auto; /* Permette lo scrolling verticale */
+            height: 100vh; /* Occupa l'altezza completa della finestra */
+        }
+
+        /* Stile del contenitore della barra di navigazione */
+        #navbar {
+            display: flex; /* Usa flexbox */
+            flex-direction: column; /* Dispone gli elementi in colonna */
+        }
+
+        /* Stile dell'intestazione della barra di navigazione */
+        #navbar header{
+            margin-left: 25px; /* Aggiunge margine a sinistra */
+            margin-bottom: 25px; /* Aggiunge margine in basso */
+            letter-spacing: 1px; /* Aumenta la spaziatura tra le lettere */
+            font-weight: bold; /* Rende il testo in grassetto */
+        }
+
+        /* Stile del link nella barra di navigazione */
+        #navbar a {
+            margin: 10px 0; /* Aggiunge margine sopra e sotto */
+            text-decoration: none; /* Rimuove la sottolineatura dai link */
+            margin-left: 25px; /* Aggiunge margine a sinistra */
+            color: #333; /* Imposta il colore del testo */
+        }
+
+        /* Stile della sezione principale della pagina */
+        main {
+            flex-basis: 75%; /* Occupa il 75% della larghezza della pagina */
+            padding: 25px 0 25px 30px; /* Aggiunge padding intorno al contenuto */
+            overflow-y: auto; /* Permette lo scrolling verticale */
+            height: 100vh; /* Occupa l'altezza completa della finestra */
+        }
+
+        /* Stile dell'intestazioen della documentazione principale */
+        #main-doc header{
+            letter-spacing: 1px; /* Aumenta la spaziatura tra le lettere */
+            font-size: 16px; /* Imposta la dimensione del font */
+            font-weight: bold; /* Rende il testo in grassetto */
+            margin-bottom: 15px; /* Aggiunge margine in basso */
+            color: #000; /* Imposta il colore del testo */
+        }
+
+        /* Stile delle sezioni principali */
+        .main-section{
+            margin-bottom: 15px; /* Aggiunge margine in basso */
+            font-size: 13px; /* Imposta la dimensione del font */
+            letter-spacing: 1px; /* Aumenta la spaziatura tra le lettere */
+            color: #333; /* Imposta il colore del testo */
+        }
+
+        /* Stile delle liste nelle sezioni principali */
+        .main-section ul{
+            margin-left: 30px; /* Aggiunge margine a sinistra */
+            margin-top: 10px; /* Aggiunge margine sopra */
+            margin-bottom: 10px; /* Aggiunge margine sotto */
+        }
+
+        /* Stile del codice */
+        code {
+            font-size: small; /* Imposta una dimensione ridotta per il font */
+            margin: 15px 0 15px 20px; /* Aggiunge margine intorno */
+            display: block; /* Imposta il codice come blocco */
+        }
+
+        /* Media query per adattare il layout a schermi più piccoli */
+        @media only screen and (max-width: 600px) {
+            /* Stili per schermi con larghezza massima di 600px */
+        }
+    </style>
+</head>
+<body>
+    <!-- Barra di navigazione -->
+     <nav id="navbar">
+        <header>Django Documentation</header>
+        <hr>
+        <!-- Collegamenti di navigazione -->
+         <a class="nav-link" href="#Introduction">Introduction</a>
+         <hr>
+         <a class="nav-link" href="#Installation">Installation</a>
+         <hr>
+         <a class="nav-link" href="#Models">Models</a>
+         <hr>
+         <a class="nav-link" href="#View">View</a>
+         <hr>
+         <a class="nav-link" href="#Templates">Templates</a>
+         <hr>
+         <!-- Contenuto principale della documentazione -->
+          <main id="main-doc">
+            <section id="Introduction" class="main-section">
+                <header>Introduction</header>
+                <!-- Descrizione introduttiva -->
+                 <p>Descrizione introduttiva a Django</p>
+                 <ul>
+                    <li>Elenco</li>
+                    <li>Non</li>
+                    <li>Ordinato</li>
+                 </ul>
+                 <!-- Esempio di importazione di Django in Python -->
+                 <code>import django</code>
+            </section>
+          </main>
+     </nav>
+</body>
+</html>

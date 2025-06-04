@@ -1,0 +1,160 @@
+<html lang="en"> <!-- Documento HTML con lingua inglese -->
+  <head> <!-- Inizio della sezione head -->
+    <meta charset="UTF-8"> <!-- Definizione del set di caratteri UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Impostazione del viewport per design responsive -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"> <!-- Compatibilità con Internet Explorer -->
+    <title>HTML 5 Boilerplate</title> <!-- Titolo della pagina web -->
+    <style>
+        /*
+Background image:
+    https://www.freepik.com/free-vector/flat-abstract-wireframe-background_15441840.htm#position=1
+*/
+/* Fonte dell'immagine di sfondo */
+
+body {
+    display: flex; /* Imposta il display come flex */
+    justify-content: center; /* Centra orizzontalmente il contenuto */
+    align-items: center; /* Centra verticalmente il contenuto */
+    flex-direction: column; /* Organizza gli elementi in colonna */
+    background-color: #e5e5f7; /* Colore di sfondo chiaro */
+    background-image: url("5574041.jpg"); /* Immagine di sfondo */
+    background-size: cover; /* Copre l'intera area disponibile */
+    background-position: center; /* Posiziona l'immagine al centro */
+}
+
+form {
+    /* From https://css.glass */ /* Effetto vetro da css.glass */
+    background: rgba(255, 255, 255, 0.54); /* Sfondo bianco semi-trasparente */
+    border-radius: 16px; /* Angoli arrotondati */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Ombra leggera */
+    backdrop-filter: blur(9.1px); /* Effetto sfocatura per lo sfondo */
+    -webkit-backdrop-filter: blur(9.1px); /* Compatibilità per Safari */
+    display: flex; /* Imposta il display come flex */
+    justify-content: center; /* Centra orizzontalmente il contenuto */
+    align-items: center; /* Centra verticalmente il contenuto */
+    flex-direction: column; /* Organizza gli elementi in colonna */
+    min-width: 400px; /* Larghezza minima del form */
+    margin: 15px; /* Margine esterno */
+    height: 600px; /* Altezza fissa del form */
+}
+
+form label {
+    display: flex; /* Imposta il display come flex */
+    justify-content: flex-start; /* Allinea a sinistra */  
+    width: 45%; /* Larghezza delle etichette */  
+    margin-bottom: 5px; /* Margine inferiore */
+    font-weight: 700; /* Testo in grassetto */
+    padding-top: 10px; /* Spazio superiore */
+}
+
+h1 {
+    color: white; /* Colore del testo bianco */
+    padding: 8px; /* Spazio interno */
+    border: 1px solid #fd5c63; /* Bordo rosa-rosso */
+    border-radius: 20px; /* Angoli molto arrotondati */
+}
+
+input {
+    border-radius: 15px; /* Angoli arrotondati */
+    outline: none; /* Rimuove il contorno focus predefinito */
+    border: none; /* Rimuove il bordo */
+}
+
+input:focus {
+    border-radius: 15px; /* Mantiene gli angoli arrotondati anche in focus */
+    /* box-shadow: inset; */ /* Commentato: ombra interna */
+}
+
+#description {
+    color: #fd5c63; /* Colore del testo rosa-rosso */
+    font-size: 22px; /* Dimensione del testo aumentata */
+}
+
+#number {
+    display: flex; /* Imposta il display come flex */
+    border-radius: 15px; /* Angoli arrotondati */
+    justify-content: flex-start; /* Allinea a sinistra */
+    border: none; /* Rimuove il bordo */
+}
+
+#dropdown {
+    border: none; /* Rimuove il bordo */
+    margin-top: 15px; /* Spazio superiore */
+    border-radius: 15px; /* Angoli arrotondati */
+    width: 120px; /* Larghezza fissa */
+    padding-left: 5px; /* Spazio interno a sinistra */
+    outline: none; /* Rimuove il contorno focus predefinito */
+}
+
+#radios, #radios2 {
+    padding-top: 15px; /* Spazio superiore */
+    min-width: 200px; /* Larghezza minima */
+}
+
+#checkbox {
+    min-width: 200px; /* Larghezza minima */
+    margin-top: 15px; /* Spazio superiore */
+}
+
+textarea {
+    margin-top: 20px; /* Spazio superiore */
+    width: 250px; /* Larghezza fissa */
+    height: 100px; /* Altezza fissa */
+    outline: none; /* Rimuove il contorno focus predefinito */
+    border-radius: 15px; /* Angoli arrotondati */
+    border: none; /* Rimuove il bordo */
+    resize: none; /* Impedisce il ridimensionamento */
+}
+
+#submit {
+    margin-top: 50px; /* Ampio spazio superiore */
+    width: 150px; /* Larghezza fissa */
+    height: 40px; /* Altezza fissa */
+    resize: none; /* Non applicabile a button, ma presente nel codice */
+    border-radius: 20px; /* Angoli molto arrotondati */
+    margin-bottom: 40px; /* Ampio spazio inferiore */
+    cursor: pointer; /* Cambia il cursore in puntatore */
+    background: #fd5c63; /* Sfondo rosa-rosso */
+    border: none; /* Rimuove il bordo */
+    font-size: 16px; /* Dimensione del testo aumentata */
+    color: white; /* Colore del testo bianco */
+}
+
+#submit:hover {
+    background: #E32636; /* Sfondo rosso più scuro in hover */
+}
+    </style>
+  </head> <!-- Fine della sezione head -->
+  <body> <!-- Inizio del corpo della pagina -->
+    <h1 id="title">VC's Survey Form</h1> <!-- Titolo principale con ID "title" -->
+    <p id="description">Sports Survey</p> <!-- Descrizione del modulo con ID "description" -->
+    <form id="survey-form"> <!-- Inizio del modulo con ID "survey-form" -->
+      <label id="name-label">Name:</label> <!-- Etichetta per il campo nome -->
+      <input id="name" required placeholder="Vaggelis"></input> <!-- Campo di input per il nome con placeholder -->
+      <label id="email-label" >Email:</label> <!-- Etichetta per il campo email -->
+      <input id="email" type=email required placeholder="vaggelischasanis@gmail.com"></input> <!-- Campo di input per l'email con validazione -->
+      <label id="number-label">Age:</label> <!-- Etichetta per il campo età -->
+      <input id="number" type=number min="0" max="10" placeholder="0"></input> <!-- Campo numerico per l'età con limiti -->
+    <select id="dropdown" name="Sport"> <!-- Menu a tendina per la selezione dello sport -->
+      <option disabled selected>Select a sport</option> <!-- Opzione predefinita (disabilitata) -->
+      <option> Basketball </option> <!-- Opzione basket -->
+      <option> Football </option> <!-- Opzione calcio -->
+      <option> Other </option> <!-- Opzione altro -->
+    </select> <!-- Fine del menu a tendina -->
+    <div id="radios"> <!-- Contenitore per il primo gruppo di radio button -->    
+        <input type="radio" value="0" name="agree">Professional</radio> <!-- Radio button per professionista (nota: tag chiusura errato) -->
+        <input type="radio" value="1" name="agree">Semi-Pro</radio> <!-- Radio button per semi-professionista (nota: tag chiusura errato) -->
+    </div> <!-- Fine del primo gruppo di radio button -->
+    <div id="radios2"> <!-- Contenitore per il secondo gruppo di radio button -->
+        <input type="radio" value="0" name="agree2">Active</radio> <!-- Radio button per attivo (nota: tag chiusura errato) -->
+        <input type="radio" value="1" name="agree2">Retired</radio> <!-- Radio button per ritirato (nota: tag chiusura errato) -->
+    </div> <!-- Fine del secondo gruppo di radio button -->
+    <div id="checkbox"> <!-- Contenitore per le caselle di controllo -->
+        <input type="checkbox" value="0">Coaching</input> <!-- Checkbox per allenamento (nota: tag chiusura errato) -->
+        <input type="checkbox" value="1">Playing</input> <!-- Checkbox per giocare (nota: tag chiusura errato) -->
+    </div> <!-- Fine delle caselle di controllo -->
+    <textarea></textarea> <!-- Area di testo per commenti aggiuntivi -->
+    <button id="submit">Submit</button> <!-- Pulsante di invio del modulo -->
+    </form> <!-- Fine del modulo -->
+  </body> <!-- Fine del corpo della pagina -->
+</html> <!-- Fine del documento HTML -->
